@@ -40,6 +40,7 @@ import com.nikati.manage.core.interceptor.GunsUserFilter;
 import com.nikati.manage.core.shiro.ShiroDbRealm;
 
 import javax.servlet.Filter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -118,9 +119,17 @@ public class ShiroConfig {
     @Bean
     public CookieRememberMeManager rememberMeManager(SimpleCookie rememberMeCookie) {
         CookieRememberMeManager manager = new CookieRememberMeManager();
-        manager.setCipherKey(Base64.decode("Z3VucwAAAAAAAAAAAAAAAA=="));
+        manager.setCipherKey(Base64.decode("cWlhbnl1bmtlamk="));
         manager.setCookie(rememberMeCookie);
         return manager;
+    }
+
+    public static void main(String[] args) throws UnsupportedEncodingException {
+
+        System.out.println( new String(Base64.decode("Z3VucwAAAAAAAAAAAAAAAA==")) );
+        System.out.println( new String(Base64.encode("qianyunkeji".getBytes("UTF-8"))) );
+        System.out.println( new String(Base64.decode("cWlhbnl1bmtlamk=")) );
+
     }
 
     /**
